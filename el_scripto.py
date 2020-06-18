@@ -5,6 +5,7 @@ import requests
 #modulos de terceros
 import PyPDF2
 from bs4 import BeautifulSoup
+import pathlib
 
 def Buscar_URLs(s):
 	pattern = "http:\/\/link\.springer\.com\/openurl\?genre\=book\&isbn\=\d+-\d+-\d+\d+-\d+-\d+"
@@ -12,7 +13,8 @@ def Buscar_URLs(s):
 	return urls
 
 def main():
-	ruta_origen = open('/home/diego/Downloads/Telegram Desktop/Springer Ebooks.pdf','rb')
+	dirname = os.path.dirname(__file__)
+	ruta_origen = os.path.join(dirname, 'ebooks.pdf')
 
 	PDF = PyPDF2.PdfFileReader(ruta_origen)
 	pages = PDF.getNumPages()
